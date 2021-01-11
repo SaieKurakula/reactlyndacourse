@@ -1,17 +1,34 @@
+import React, {useState, useEffect} from "react"
 import './App.css';
 
-function SecretComponent() {
-  return <h1>Super secret info for authorized users only</h1>
-}
-
-function RegularComponent(){
-  return <h1>Everyone else can see this component.</h1>
-}
-
-function App(props) {
+function App() {
+  const [emotion, setEmotion] = useState("happy");
+  const [secondary, setSecondary] = useState("tired");
+  
+  useEffect(()=> {
+    console.log(`${emotion}`);
+  }, [emotion]);
+  
+  useEffect(()=> {
+    console.log(`${secondary}`);
+  }, [secondary]);
+  
   return (
     <>
-      {props.authorized ? <SecretComponent /> : <RegularComponent />}
+      <h1>Hello</h1>
+      <h1>Current emotion is {emotion} and {secondary}</h1>
+      <button onClick={() => setEmotion("frustrated")}>
+        Frustrate
+      </button>
+      <button onClick={() => setSecondary("crabby")}>
+        crabby
+      </button>
+      <button onClick={() => setEmotion("enthusiastic")}>
+        Enthuse
+      </button>
+      <button onClick={() => setEmotion("happy")}>
+        Happy 
+      </button>
     </>
   )
 }
