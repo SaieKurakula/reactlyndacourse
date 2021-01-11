@@ -9,13 +9,11 @@ function RegularComponent(){
 }
 
 function App(props) {
-  if(props.authorized) {
-    return <SecretComponent />;
-  }
-  else {
-    return <RegularComponent />;
-  }
-
+  return (
+    <>
+      {props.authorized ? <SecretComponent /> : <RegularComponent />}
+    </>
+  )
 }
 
 export default App;
