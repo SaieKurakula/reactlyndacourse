@@ -1,13 +1,12 @@
-import React, {useState} from "react"
+import React, {useReducer} from "react"
 import './App.css';
 
 function App() {
-  const [checked, setChecked] = useState(false);
-
-  function toggle() {
-    setChecked(!checked);
-  }
-
+  const [checked, toggle] = useReducer(
+    (checked) => !checked,
+    false
+  );
+  
   return (
     <>
       <input type="checkbox" value={checked} onChange={toggle}/>
